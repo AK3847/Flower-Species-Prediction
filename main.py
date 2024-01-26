@@ -1,4 +1,4 @@
-
+from model import predict
 def start():
     predict()
 
