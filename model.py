@@ -4,6 +4,7 @@ from sklearn.model_selection import train_test_split
 from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
+from sklearn.metrics import confusion_matrix
 import rich
 from rich.console import Console
 from sklearn.datasets import load_iris
@@ -31,7 +32,9 @@ def accuracy(model,X_test_scaled,y_test):
     report = classification_report(y_test, y_pred)
 
     console.print(f"Accuracy: {accuracy}",style="#5272F2")
-    print("Classification Report:\n", report)
+    console.print(f"[#6895D2]Classification Report:[/#6895D2]\n {report}",style="#F3B95F")
+    matrix=confusion_matrix(y_test,y_pred)
+    console.print(f"[#6895D2]Confusion Matrix:[/#6895D2]\n{matrix}")
 
 
 def predict():
@@ -40,5 +43,5 @@ def predict():
     if(s=='y' or s=='Y'):
         accuracy(model,X_test_scaled,y_test)
     else:
-        print(f'Exiting....')
+        console.print(f'Exiting....')
         exit()
