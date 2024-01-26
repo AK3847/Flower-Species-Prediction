@@ -7,12 +7,12 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
 import os
+import time
 from rich.console import Console
 from sklearn.datasets import load_iris
 console=Console()
 state=0
 def make_model():
-    # global state
     iris = load_iris()
     X = iris.data
     y = iris.target
@@ -42,7 +42,7 @@ def accuracy(model,X_test_scaled,y_test):
 def save_state():
     if not os.path.exists('model_state.txt'):
         with open('model_state.txt','w') as file:
-            file.write('None')
+            file.write('')
     with open('model_state.txt','a') as file:
         file.write(str(f'\nState:{state} at Date/Time: {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}'))
 
@@ -50,12 +50,26 @@ def predict():
     global state
     state=np.random.randint(0,100000)
     model,X_test_scaled,y_test=make_model()
-    s=input(f'Find accuracy (Y/n): ')
+    console.print(f'Find accuracy (Y/n): ',style="#F8FFD2")
+    s=''
+    while s not in ('y','n','Y','N'):
+        s=input()
+        if s in ('y','Y','n','N'):
+            break
+        console.print('Wrong Input Please Try again',style="#FF1700")
     if(s=='y' or s=='Y'):
+        time.sleep(2)
         accuracy(model,X_test_scaled,y_test)
-    elif (s!='n'):
-        console.print(f'Wrong Choice!')
-    console.print(f'Do you want to save the model state? (Y/N) ')
-    s=input()
-    if(s=='Y' or s=='y'):
+    console.print(f'Do you want to save the model state? (Y/n) ',style="#F8FFD2")
+    s=''
+    while s not in ('y','n','Y','N'):
+        s=input()
+        if s in ('y','Y','n','N'):
+            break
+        console.print('Wrong Input Please Try again',style="#FF1700")
+    if s in ('y','Y'):
         save_state()
+    else:
+        console.print('Exiting the program...',style="Italic #F8FFD2 ")
+        time.sleep(1)
+        exit()
