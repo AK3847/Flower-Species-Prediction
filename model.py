@@ -26,7 +26,7 @@ def make_model():
 
     model = DecisionTreeClassifier(random_state=state)
     model.fit(X_train_scaled, y_train)
-    console.print(f'The Model has been succesfully made!',style="italic #42855B")
+    console.print(f'The Model has been succesfully made!',style="italic #F8FFD2")
     return model,X_test_scaled,y_test
 
 def accuracy(model,X_test_scaled,y_test):
@@ -34,7 +34,7 @@ def accuracy(model,X_test_scaled,y_test):
     accuracy = accuracy_score(y_test, y_pred)
     report = classification_report(y_test, y_pred)
 
-    console.print(f"Accuracy: {accuracy}",style="#5272F2")
+    console.print(f"Accuracy: {accuracy}",style="#6895D2")
     console.print(f"[#6895D2]Classification Report:[/#6895D2]\n {report}",style="#F3B95F")
     matrix=confusion_matrix(y_test,y_pred)
     console.print(f"[#6895D2]Confusion Matrix:[/#6895D2]\n{matrix}")
