@@ -1,3 +1,6 @@
+#Flower Species Classifier made by Abdul Kadir ;)
+#Github profile: https://github.com/AK3847
+
 from model import predict
 from rich.console import Console
 import time
