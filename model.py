@@ -7,7 +7,6 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
 import os
-import rich
 from rich.console import Console
 from sklearn.datasets import load_iris
 console=Console()
