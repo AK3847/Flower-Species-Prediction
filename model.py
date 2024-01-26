@@ -6,10 +6,13 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
+from sklearn.datasets import load_iris
+
+from rich.console import Console
+from rich.progress import track
+
 import os
 import time
-from rich.console import Console
-from sklearn.datasets import load_iris
 console=Console()
 state=0
 def make_model():
@@ -58,8 +61,8 @@ def predict():
             break
         console.print('Wrong Input Please Try again',style="#FF1700")
     if(s=='y' or s=='Y'):
-        for x in track(range(100),description="Making the Model...",style="#F8FFD2"):
-        time.sleep(0.1)
+        for x in track(range(100),description="Finding Accuracy..",style="#F8FFD2"):
+            time.sleep(0.1)
         accuracy(model,X_test_scaled,y_test)
     console.print(f'Do you want to save the model state? (Y/n) ',style="#F8FFD2")
     s=''
@@ -69,6 +72,7 @@ def predict():
             break
         console.print('Wrong Input Please Try again',style="#FF1700")
     if s in ('y','Y'):
+        console.print(f'The state : {state} has been saved in [italic] model_state.txt [/italic]',style="#F8FFD2")
         save_state()
     else:
         console.print('Exiting the program...',style="Italic #F8FFD2 ")
