@@ -62,7 +62,7 @@ def predict():
         console.print('Wrong Input Please Try again',style="#FF1700")
     if(s=='y' or s=='Y'):
         for x in track(range(100),description="Finding Accuracy..",style="#F8FFD2"):
-            time.sleep(0.1)
+            time.sleep(0.09)
         accuracy(model,X_test_scaled,y_test)
     console.print(f'Do you want to save the model state? (Y/n) ',style="#F8FFD2")
     s=''
