@@ -9,6 +9,7 @@ from sklearn.metrics import confusion_matrix
 from sklearn.datasets import load_iris
 from rich.console import Console
 from rich.progress import track
+from joblib import dump, load
 import os
 import time
 
@@ -46,12 +47,9 @@ def accuracy(model,X_test_scaled,y_test):
     console.print(f"[#6895D2]Confusion Matrix:[/#6895D2]\n{matrix}")
 
 #user made function to save the state of model
-def save_state():
-    if not os.path.exists('model_state.txt'):
-        with open('model_state.txt','w') as file:
-            file.write('')
-    with open('model_state.txt','a') as file:
-        file.write(str(f'\nState:{state} at Date/Time: {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}'))
+def save_state(model):
+    dump(model,f'model_{state}.joblib')
+    console.print(f'The model has been saved into a .joblib file named:[italic #29b8db] model_{state}[/italic #29b8db]',style="#F8FFD2")
 
 #main function to be called in main.py
 def predict():
@@ -77,8 +75,7 @@ def predict():
             break
         console.print('Wrong Input Please Try again',style="#FF1700")
     if s in ('y','Y'):
-        console.print(f'The state : {state} has been saved in [italic] model_state.txt [/italic]',style="#F8FFD2")
-        save_state()
+        save_state(model)
     else:
         console.print('Exiting the program...',style="Italic #F8FFD2 ")
         time.sleep(1)
