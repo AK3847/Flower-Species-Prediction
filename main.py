@@ -5,13 +5,12 @@ from model import predict
 from rich.console import Console
 import time
 from rich.progress import track
-
-
 console=Console()
 
 def start():
     predict()
 
+#main function
 if __name__=='__main__':
     console.print('A Python script to predict the Flower Species',style="#42855B")
     console.print('Specifications:',style="Bold underline #42855B")
