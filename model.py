@@ -7,14 +7,16 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.metrics import accuracy_score, classification_report
 from sklearn.metrics import confusion_matrix
 from sklearn.datasets import load_iris
-
 from rich.console import Console
 from rich.progress import track
-
 import os
 import time
+
+
 console=Console()
 state=0
+
+#user defined function to make a model
 def make_model():
     iris = load_iris()
     X = iris.data
@@ -32,6 +34,7 @@ def make_model():
     console.print(f'The Model has been succesfully made!',style="italic #F8FFD2")
     return model,X_test_scaled,y_test
 
+#user made function to find accuracy of the model
 def accuracy(model,X_test_scaled,y_test):
     y_pred = model.predict(X_test_scaled)
     accuracy = accuracy_score(y_test, y_pred)
@@ -42,6 +45,7 @@ def accuracy(model,X_test_scaled,y_test):
     matrix=confusion_matrix(y_test,y_pred)
     console.print(f"[#6895D2]Confusion Matrix:[/#6895D2]\n{matrix}")
 
+#user made function to save the state of model
 def save_state():
     if not os.path.exists('model_state.txt'):
         with open('model_state.txt','w') as file:
@@ -49,6 +53,7 @@ def save_state():
     with open('model_state.txt','a') as file:
         file.write(str(f'\nState:{state} at Date/Time: {datetime.now().strftime("%d-%m-%Y %H:%M:%S")}'))
 
+#main function to be called in main.py
 def predict():
     global state
     state=np.random.randint(0,100000)
