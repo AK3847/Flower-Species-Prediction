@@ -5,6 +5,7 @@ from model import main_model
 from rich.console import Console
 import time
 from rich.progress import track
+from predict import predict
 console=Console()
 
 def start():
@@ -20,3 +21,4 @@ if __name__=='__main__':
     for x in track(range(100),description="Making the Model...",style="#F8FFD2"):
         time.sleep(0.08)
     start()
+    predict()
