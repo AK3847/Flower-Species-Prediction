@@ -20,27 +20,27 @@ if __name__=='__main__':
     console.print('Test Size: [#638889]0.3/30%[/#638889]',style="#42855B")
     for x in track(range(100),description="Making the Model...",style="#F8FFD2"):
         time.sleep(0.08)
-    console.print('Train a new model/Use a pre-trained model (T/N):')
+    console.print('Train a new model/Use a pre-trained model (T/N):',style="#F8FFD2")
     s=input()
     choice=['t','T','n','N']
     while s not in choice:
-        console.print('Invalid Input, try again.')
+        console.print('Invalid Input, try again.',style="#FF1700")
         s=input()
         if s in choice:
             break
     if s=='t' or s=='T':
         model_name=main_model()
         choices=['y','Y','n','N']
-        console.print('Want to predict a flower species based on this model? (y/n)')
+        console.print('Want to predict a flower species based on this model? (y/n)',style="#F8FFD2")
         s=input()
         while s not in choices:
-            console.print('Invalid Input, try again.')
+            console.print('Invalid Input, try again.',style="#FF1700")
             s=input()
             if s in choices:
                 break
         if s in ['y','Y']:
             predict(model_name,False)
         else:   
-            console.print('Exiting the Program')
+            console.print('Exiting the Program',style="Italic #F8FFD2 ")
     else:
         predict('',True)
