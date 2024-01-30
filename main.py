@@ -1,14 +1,14 @@
 #Flower Species Classifier made by Abdul Kadir ;)
 #Github profile: https://github.com/AK3847
 
-from model import predict
+from model import main_model
 from rich.console import Console
 import time
 from rich.progress import track
 console=Console()
 
 def start():
-    predict()
+    main_model()
 
 #main function
 if __name__=='__main__':

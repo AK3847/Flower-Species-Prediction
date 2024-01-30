@@ -52,7 +52,7 @@ def save_state(model):
     console.print(f'The model has been saved into a .joblib file named:[italic #29b8db] model_{state}[/italic #29b8db]',style="#F8FFD2")
 
 #main function to be called in main.py
-def predict():
+def main_model():
     global state
     state=np.random.randint(0,100000)
     model,X_test_scaled,y_test=make_model()
