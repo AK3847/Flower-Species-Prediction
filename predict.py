@@ -42,9 +42,12 @@ def flower_predict(user_input,model):
     pre_class=model.predict(scaled_input.reshape(1, -1))
     return pre_class[0]
 
-def predict():
-    filename=get_name()
-    model=load_model(filename)
+def predict(model_name,model_status):
+    if(model_status):
+       filename=get_name()
+       model=load_model(filename)
+    else:
+        model=load_model(model_name)
     user_input=get_input()
     pre_class=flower_predict(user_input,model)
     preflower=flowertypes.get(pre_class)

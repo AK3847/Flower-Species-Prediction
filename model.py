@@ -50,10 +50,11 @@ def accuracy(model,X_test_scaled,y_test):
 def save_state(model):
     dump(model,f'model_{state}.joblib')
     console.print(f'The model has been saved into a .joblib file named:[italic #29b8db] model_{state}[/italic #29b8db]',style="#F8FFD2")
-
+    return f'model_{state}'
 #main function to be called in main.py
 def main_model():
     global state
+    model_name=''
     state=np.random.randint(0,100000)
     model,X_test_scaled,y_test=make_model()
     console.print(f'Find accuracy (Y/n): ',style="#F8FFD2")
@@ -75,8 +76,8 @@ def main_model():
             break
         console.print('Wrong Input Please Try again',style="#FF1700")
     if s in ('y','Y'):
-        save_state(model)
+        model_name=save_state(model)
     else:
         console.print('Exiting the program...',style="Italic #F8FFD2 ")
         time.sleep(1)
-        exit()
+    return model_name

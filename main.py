@@ -18,8 +18,8 @@ if __name__=='__main__':
     console.print('Method Used: [#638889]Decision Tree Classifier[/#638889]',style="#42855B")
     console.print('Data Set Used: [#638889]Iris DataSet[/#638889]',style="#42855B")
     console.print('Test Size: [#638889]0.3/30%[/#638889]',style="#42855B")
-    # for x in track(range(100),description="Making the Model...",style="#F8FFD2"):
-    #     time.sleep(0.08)
+    for x in track(range(100),description="Making the Model...",style="#F8FFD2"):
+        time.sleep(0.08)
     console.print('Train a new model/Use a pre-trained model (T/N):')
     s=input()
     choice=['t','T','n','N']
@@ -29,7 +29,7 @@ if __name__=='__main__':
         if s in choice:
             break
     if s=='t' or s=='T':
-        new_model()
+        model_name=main_model()
         choices=['y','Y','n','N']
         console.print('Want to predict a flower species based on this model? (y/n)')
         s=input()
@@ -39,8 +39,8 @@ if __name__=='__main__':
             if s in choices:
                 break
         if s in ['y','Y']:
-            predict()
+            predict(model_name,False)
         else:   
             console.print('Exiting the Program')
     else:
-        predict()
+        predict('',True)
