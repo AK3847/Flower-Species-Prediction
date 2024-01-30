@@ -51,4 +51,4 @@ def predict(model_name,model_status):
     user_input=get_input()
     pre_class=flower_predict(user_input,model)
     preflower=flowertypes.get(pre_class)
-    console.print(f'Predicted Flower type: [bold italic]{preflower}[/bold italic]',style="#F8FFD2")
+    console.print(f'Predicted Flower type: [bold italic #E8C872]{preflower}[/bold italic #E8C872]',style="#F8FFD2")
