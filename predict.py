@@ -26,10 +26,15 @@ def load_model(filename):
     return model
     
 def get_input():
-    sepal_length = float(input("Enter sepal length (cm): "))
-    sepal_width = float(input("Enter sepal width (cm): "))
-    petal_length = float(input("Enter petal length (cm): "))
-    petal_width = float(input("Enter petal width (cm): "))
+    console.print('Give your dimensions (in cm):',style="#FFF3CF")
+    console.print('Sepal length ',style="#F8FFD2")
+    sepal_length = float(input())
+    console.print('Sepal width ',style="#F8FFD2")
+    sepal_width = float(input())
+    console.print('Petal length ',style="#F8FFD2")
+    petal_length = float(input())
+    console.print('Petal width ',style="#F8FFD2")
+    petal_width = float(input())
     return np.array([[sepal_length, sepal_width, petal_length, petal_width]])
 
 def flower_predict(user_input,model):
@@ -38,7 +43,6 @@ def flower_predict(user_input,model):
     return pre_class[0]
 
 def predict():
-
     filename=get_name()
     model=load_model(filename)
     user_input=get_input()
