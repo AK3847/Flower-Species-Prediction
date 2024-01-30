@@ -8,9 +8,6 @@ from rich.progress import track
 from predict import predict
 console=Console()
 
-def new_model():
-    main_model()
-
 #main function
 if __name__=='__main__':
     console.print('A Python script to predict the Flower Species',style="#42855B")
